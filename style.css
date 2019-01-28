@@ -1,10 +1,48 @@
+
+button{
+    color: inherit;
+    font: inherit;
+    margin: 0; }
+
+button {
+    overflow: visible; }
+
+button {
+    text-transform: none; }
+
+button {
+    -webkit-appearance: button;
+    cursor: pointer; }
+
+button[disabled] {
+    cursor: default; }
+
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+
 .buttons {
     position: fixed;
     top: 20px;
     right: 20px; }
-
 .buttons button {
     width: 140px;
     display: block;
     margin-bottom: 5px; }
 
+#loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0; }
+#loader .dot {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 100%;
+    margin-right: 6px;
+    border: 2px #2b4d66 solid; }
