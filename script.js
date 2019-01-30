@@ -20,7 +20,19 @@ let bb8Body = document.getElementById("bb8-body");
 let bb8Shadow = document.getElementById("bb8-shadow");
 let bb8Head = document.getElementById("bb8-head");
 let buttons = document.getElementById("button");
+let mountainS = document.getElementById("mountain1");
+let mountainM = document.getElementById("mountain2");
+let mountainL = document.getElementById("mountain3");
+let mountainSm = document.getElementById("mountain4");
+let mountainMd = document.getElementById("mountain5");
+let mountainLg = document.getElementById("mountain6");
+let earth1 = document.getElementById("earth");
+let earth2 = document.getElementById("earth2");
+let earth3 = document.getElementById("earth3");
+let earth4 = document.getElementById("earth4");
+let middle = document.getElementById("middle");
 
+// TweenMax.to(mountain, 2, {autoAlpha: 0});
 //
 // tl
 //     .to(frame, 8, {scale:3, force3D:false})
@@ -83,7 +95,7 @@ tl.staggerFrom(".buttons", 1, {
 //
 // }
 
-
+tl.to(bb8Shadow, 0.5, {scale: 1.2, repeat: -1, yoyo: true, ease: Linear.easeNone});
 tl
     .set(bb8Body, {
         transformOrigin: "50% 50%"
@@ -97,10 +109,14 @@ tl
         ease: Linear.easeNone,
         repeat: -1,
         paused: false
-    });
+    })
 
-tl
-    .to(bb8Shadow, 1, {scale: 1.2, yoyo: true});
+// TweenMax.to(bb8Head, 20, {
+//     bezier:{
+//         type:"soft",
+//         values:[{x:100, y:300}, {x:200, y:30}, {x:300, y:150}, {x:400, y:10}, {x:600, y:200}],
+//         autoRotate:true
+//     }, force3D:true});
 
 let animTl = new TimelineMax({repeat: -1});
 let tween1 = (TweenLite.to(bb8Head, 1, {
@@ -146,4 +162,63 @@ animTl.add([tween1, tween2, tween3, tween4], "+=1", "sequence", 0.5);
 // .to(bb8Head, 0.275, {y: "-=5", yoyo: true, repeatDelay: 0.1, ease: Power4.easeInOut})
 // .to(bb8Head, 1.2, {rotation: -30, transformOrigin: "center", ease: Back.easeInOut.config(2)}, "bb8-out");
 // .to (bb8Body, 1,{y: "-=30", ease: Power1.easeInOut, repeat: 20000, yoyo: true})
+
+
+
+
+
+let tl5 = new TimelineMax({repeat: -1});
+tl5.set(mountainS, {left: 600, autoAlpha: 1});
+tl5.fromTo(mountainS, 20, {x: -1440, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone});
+tl5.set(mountainS, {autoAlpha: 0});
+
+let tl6 = new TimelineMax({repeat: -1});
+tl6.set(mountainM, {autoAlpha: 1,y:310});
+tl6.fromTo(mountainM, 22, {x: -1440, ease: Linear.easeNone}, {x: 4740, ease: Linear.easeNone});
+tl6.set(mountainM, {autoAlpha: 0});
+
+let tl7 = new TimelineMax({repeat: -1});
+tl7.set(mountainL, {autoAlpha: 1});
+tl7.fromTo(mountainL, 18, {x: -2840, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone});
+tl7.set(mountainL, {autoAlpha: 0});
+
+let tlSm = new TimelineMax({repeat: -1,delay:4});
+tlSm.set(mountainSm, {left: 600, autoAlpha: 1});
+tlSm.fromTo(mountainSm, 18, {x: -1940, ease: Linear.easeNone}, {x: 4640, ease: Linear.easeNone});
+tlSm.set(mountainSm, {autoAlpha: 0});
+
+let tl9 = new TimelineMax({repeat: -1,delay:4});
+tl9.set(mountainMd, {autoAlpha: 1,y:310});
+tl9.fromTo(mountainMd, 22, {x: -940, ease: Linear.easeNone}, {x: 4740, ease: Linear.easeNone});
+tl9.set(mountainMd, {autoAlpha: 0});
+
+let tl10 = new TimelineMax({repeat: -1,delay:8});
+tl10.set(mountainLg, {autoAlpha: 1,y:20});
+tl10.fromTo(mountainLg, 20, {x: -2840, ease: Linear.easeNone}, {x: 3640, ease: Linear.easeNone});
+tl10.set(mountainLg, {autoAlpha: 0});
+
+let tl11 = new TimelineMax({repeat: -1});
+tl11.set(earth1, {autoAlpha: 1});
+tl11.fromTo(earth1, 10, {x: -2440, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone});
+tl11.set(earth1, {autoAlpha: 0});
+
+let tl12 = new TimelineMax({repeat: -1});
+tl12.set(earth2, {autoAlpha: 1});
+tl12.fromTo(earth2, 10, {x: -1440, ease: Linear.easeNone}, {x: 1060, ease: Linear.easeNone});
+tl12.set(earth2, {autoAlpha: 0});
+
+let tl13 = new TimelineMax({repeat: -1});
+tl13.set(earth3, {autoAlpha: 1});
+tl13.fromTo(earth3, 10, {x: -1440, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone});
+tl13.set(earth3, {autoAlpha: 0});
+
+let tl14 = new TimelineMax({repeat: -1});
+tl14.set(earth4, {autoAlpha: 1});
+tl14.fromTo(earth4, 10, {x: -2860, ease: Linear.easeNone}, {x: 0, ease: Linear.easeNone});
+tl14.set(earth4, {autoAlpha: 0});
+
+let tl15 = new TimelineMax({repeat: -1});
+tl15.set(middle, {left: 600, autoAlpha: 1,y:60});
+tl15.fromTo(middle, 35, {x: -940, ease: Linear.easeNone}, {x: 1640, ease: Linear.easeNone});
+tl15.set(middle, {autoAlpha: 0});
 
