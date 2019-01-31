@@ -31,6 +31,12 @@ let mountainNr = document.getElementById("mountain8");
 let earth1 = document.getElementById("earth1");
 let earth2 = document.getElementById("earth2");
 let middle = document.getElementById("middle");
+let stones1 = document.getElementsByClassName("stonePart1");
+let stones2 = document.getElementsByClassName("stonePart2");
+let stones3 = document.getElementsByClassName("stonePart3");
+let stones4 = document.getElementsByClassName("stonePart4");
+let stones5 = document.getElementsByClassName("stonePart5");
+
 
 // TweenMax.to(mountain, 2, {autoAlpha: 0});
 //
@@ -222,3 +228,27 @@ tl15.set(middle, {left: 600, autoAlpha: 1,y:60});
 tl15.fromTo(middle, 35, {x: -940, ease: Linear.easeNone}, {x: 900, ease: Linear.easeNone});
 tl15.set(middle, {autoAlpha: 0});
 
+let tl16 = new TimelineMax({repeat: -1});
+tl16.set(stones1, {left: 600, autoAlpha: 1});
+tl16.fromTo(stones1, 5, {x: -3000, ease: Linear.easeNone}, {x: 2860, ease: Linear.easeNone});
+tl16.set(stones1, {autoAlpha: 0});
+
+let tl17 = new TimelineMax({repeat: -1,delay:5});
+tl17.set(stones2, {left: 600, autoAlpha: 1});
+tl17.fromTo(stones2, 5, {x: -3000, ease: Linear.easeNone}, {x: 2860, ease: Linear.easeNone});
+tl17.set(stones2, {autoAlpha: 0});
+
+let tl18 = new TimelineMax({repeat: -1,delay:1});
+tl18.set(stones3, {left: 600, autoAlpha: 1});
+tl18.fromTo(stones3, 5, {x: -3200, ease: Linear.easeNone}, {x: 2860, ease: Linear.easeNone});
+tl18.set(stones3, {autoAlpha: 0});
+
+let tl19 = new TimelineMax({repeat: -1,delay:3});
+tl19.set(stones4, {left: 600, autoAlpha: 1});
+tl19.fromTo(stones4, 5, {x: -3000, ease: Linear.easeNone}, {x: 2860, ease: Linear.easeNone});
+tl19.set(stones4, {autoAlpha: 0});
+
+let tl20 = new TimelineMax({repeat: -1,delay:2});
+tl20.set(stones5, {left: 600, autoAlpha: 1});
+tl20.fromTo(stones5, 5, {x: -3000, ease: Linear.easeNone}, {x: 2060, ease: Linear.easeNone});
+tl20.set(stones5, {autoAlpha: 0});
