@@ -204,30 +204,46 @@ function spinEarth() {
 spinEarth();
 
 
-var itm = document.getElementById("stones");
-var cln = itm.cloneNode(true);
-document.getElementById("result").appendChild(cln);
 
 
-var listItems = $('.stone'),
+var listItems = $('.stonePart1'),
     listItemsArray = listItems.toArray();
 var til = new TimelineMax({repeat: -1});
 
 listItemsArray.sort(function () {
     return 0.5 - Math.random()
 });
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.525);
+til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 300}, {x: 3500, ease: Power2.easeInOut}, 0.525);
 
-
-var listItem = $('#result'),
-    listItemArray = listItem.toArray();
+var listItems = $('.stonePart2'),
+    listItemsArray = listItems.toArray();
 var til = new TimelineMax({repeat: -1});
 
-listItemArray.sort(function random(min, max) {
-    return min + Math.random() * (max - min);
+listItemsArray.sort(function () {
+    return 0.5 - Math.random()
 });
-til.staggerFromTo(listItemArray, 3, {position: 'relative', x: -100}, {x: 3500, ease: Power2.easeInOut}, 0.55);
+til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.625);
+var listItems = $('.stonePart3'),
+    listItemsArray = listItems.toArray();
+var til = new TimelineMax({repeat: -1});
 
+listItemsArray.sort(function () {
+    return 0.5 - Math.random()
+});
+til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.725);
+var listItems = $('.stonePart4'),
+    listItemsArray = listItems.toArray();
+var til = new TimelineMax({repeat: -1});
 
+listItemsArray.sort(function () {
+    return 0.5 - Math.random()
+});
+til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.425);
+var listItems = $('.stonePart5'),
+    listItemsArray = listItems.toArray();
+var til = new TimelineMax({repeat: -1});
 
-
+listItemsArray.sort(function () {
+    return 0.5 - Math.random()
+});
+til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.325);
