@@ -9,8 +9,8 @@ let mountainNr = document.getElementById("mountain8");
 let middle = document.getElementById("middle");
 let svg = document.getElementById("svg");
 
-TweenMax.set(svg, {x:-700, scale:0.1});
-TweenMax.to(svg , 4, {x:"+=700",scale:1, force3D:false});
+// TweenMax.set(svg, {x:-700, scale:0.1});
+// TweenMax.to(svg , 4, {x:"+=700",scale:1, force3D:false});
 let tl1 = new TimelineMax({repeat: 1000});
 tl1.set(mountainS, {left: 600, autoAlpha: 1})
     .fromTo(mountainS, 40, {x: -1440, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone})

@@ -1,6 +1,5 @@
 let tl = new TimelineMax({
     repeat: -1,
-    delay: 0.5
 });
 
 let bb8 = document.getElementById("bb8");

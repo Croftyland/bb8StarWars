@@ -6,94 +6,69 @@ function random(min, max) {
 }
 
 let obj = {
-    isIntro: true,
-    isRollingLeft: true,
     currentTl: [],
-    currentGravelTl: [],
-    gravelProgress: [],
-    prevGravelProgress: [],
-    motion: 1,
-    motions: 1,
-
+    currentStoneTl: [],
+    stoneProgress: [],
+    prevStoneProgress: [],
 
     init: function init() {
         this.cacheDOM();
-        this.setStart();
         this.animate();
     },
     cacheDOM: function cacheDOM() {
         this.svg = document.querySelector("[data-bb8=svg]");
-        this.gravelGroup = this.svg.querySelector("[data-bb8=stones]");
-        this.gravel = this.svg.querySelectorAll("[data-bb8=stone]");
+        this.stoneGroup = this.svg.querySelector("[data-bb8=stones]");
+        this.stone = this.svg.querySelectorAll("[data-bb8=stone]");
+        obj.spreadStone();
     },
-    setStart: function setStart() {
-        TweenMax.set(this.svg, { autoAlpha: 1 });
-        obj.spreadGravel();
-    },
-    spreadGravel: function spreadGravel() {
-        TweenMax.set(obj.gravelGroup, {y:2000, x: -50 });
+    spreadStone: function spreadStone() {
+        TweenMax.set(obj.stoneGroup, {y:2000, x: -50 });
 
-        for (var i = 0; i <obj.gravel.length; i++) {
-            TweenMax.set(obj.gravel[i], {y:-100, x: 0, y: random(100, 800) });
+        for (var i = 0; i <obj.stone.length; i++) {
+            TweenMax.set(obj.stone[i], {y:-100, x: 0, y: random(100, 800) });
         }
-        obj.getGravelAnims("left");
+        obj.getStoneAnims("left");
+
     },
     getRollAnims: function getRollAnims(direction) {
-        var tls =obj.getGravelAnims(direction);
-        var spinDir;
-
-        if (direction === "left") {
-            spinDir = "-=360";
-        } else {
-            spinDir = "+=360";
-        }
+        var tls =obj.getStoneAnims(direction);
         var tl = new TimelineMax({});
 
         tls[tls.length] = tl;
         return tls;
     },
-    getGravelAnims: function getGravelAnims(direction) {
+    getStoneAnims: function getStoneAnims(direction) {
         var tls = [];
 
-        for (var i = 0; i <obj.gravel.length; i++) {
+        for (var i = 0; i <obj.stone.length; i++) {
             var speed = 0.5;
             var fromX = direction === "left" ? 0 : 2935;
             var toX = direction === "left" ? 2935 : 0;
 
 
-            if (obj.prevGravelProgress.length != obj.gravel.length) {
-                obj.gravelProgress[i] = random(0, 1);
-                obj.prevGravelProgress[i] = obj.gravelProgress[i];
+            if (obj.prevStoneProgress.length != obj.stone.length) {
+                obj.stoneProgress[i] = random(0, 1);
+                obj.prevStoneProgress[i] = obj.stoneProgress[i];
             } else {
-                obj.gravelProgress[i] = 1 - obj.prevGravelProgress[i];
+                obj.stoneProgress[i] = 1 - obj.prevStoneProgress[i];
             }
 
             var tl = new TimelineMax({ repeat: 2000 });
 
-            tl.fromTo(obj.gravel[i], speed, { x: fromX }, { x: toX, ease: Linear.easeNone }).progress(obj.gravelProgress[i]).paused(true);
+            tl.fromTo(obj.stone[i], speed, { x: fromX }, { x: toX, ease: Linear.easeNone }).progress(obj.stoneProgress[i]).paused(true);
 
             tls[i] = tl;
         }
         return tls;
+
     },
     animate: function animate() {
-        obj.stopPlayNext();
-    },
-
-    stopPlayNext: function stopPlayNext() {
         var direction;
-        if (obj.isRollingLeft) {
-            obj.isRollingLeft = true;
             direction = "left";
-        } else {
-            obj.isRollingLeft = true;
-            direction = "left";
-        }
-
-        TweenMax.to(obj.currentTl, 0.5 /obj.motion, { timeScale: 0, onComplete:obj.roll, onCompleteParams: [direction] });
+        obj.roll(direction);
     },
     roll: function roll(direction) {
-        var tls =obj.getRollAnims(direction);
+        var tls = obj.getRollAnims(direction);
 
         for (var i = 0; i <obj.currentTl.length; i++) {
             obj.currentTl[i].kill();
@@ -103,9 +78,9 @@ let obj = {
 
             obj.currentTl[j] = tls[j];
 
-            obj.currentTl[j].play().timeScale(0);
+            obj.currentTl[j].play();
 
-            TweenMax.to(obj.currentTl[j], 1 /obj. motion, { timeScale:obj.motions });
+            TweenMax.to(obj.currentTl[j]);
         }
     },
 };
