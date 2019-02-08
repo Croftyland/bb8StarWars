@@ -1,19 +1,3 @@
-// var tl = new TimelineMax({
-//     repeat:-1
-// });
-//
-// TweenMax.set("#bb8-body", {
-//     transformOrigin:"50% 50%"
-// });
-//
-// tl.to("#bb8-body",1, {rotation:"+=720"});
-let tl = new TimelineMax({
-    repeat: -1
-});
-let bb8 = document.getElementById("bb8");
-let bb8Body = document.getElementById("bb8-body");
-let bb8Shadow = document.getElementById("bb8-shadow");
-let bb8Head = document.getElementById("bb8-head");
 let buttons = document.getElementById("button");
 let mountainS = document.getElementById("mountain1");
 let mountainM = document.getElementById("mountain2");
@@ -57,77 +41,6 @@ tl.staggerFrom(".buttons", 1, {
         scale: [0.5, 1]
     }, autoAlpha: 0, ease: Power1.easeOut
 }, 0.5);
-
-tl.to(bb8Shadow, 0.5, {scale: 1.2, repeat: -1, yoyo: true, ease: Linear.easeNone});
-tl
-    .set(bb8Body, {
-        transformOrigin: "50% 50%"
-    })
-    .to(bb8Body, 1, {
-        css:
-            {
-                rotation: -360
-            },
-        // remove default easing for seamless loop
-        ease: Linear.easeNone,
-        repeat: -1,
-        paused: false
-    })
-
-let animTl = new TimelineMax({repeat: -1});
-// let tween1 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 30,
-//     x: 240,
-//     y: 130,
-//     transformOrigin: "center",
-//     ease: new SlowMo(0.5, 0.8),
-//     yoyo: true
-// }))
-// let tween2 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 0,
-//     x: 10,
-//     y: 0,
-//     transformOrigin: "center",
-//     ease: Power3.easeInOut,
-//     yoyo: true,
-// }))
-// let tween3 = (TweenLite.to(bb8Head, 1, {
-//     rotation: -20,
-//     x: -200,
-//     y: 30,
-//     transformOrigin: "center",
-//     ease: Bounce.easeOut,
-//     yoyo: true,
-// }))
-// let tween4 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 0,
-//     x: 10,
-//     y: 0,
-//     transformOrigin: "center",
-//     ease: Power3.easeInOut,
-//     yoyo: true,
-// }))
-
-// animTl.add([tween1, tween2, tween3, tween4], "+=1", "sequence", 0.5);
-
-animTl.to(bb8Head, 0.05, {y: 0, ease: Power1.easeInOut}, 0)
-     .to(bb8Head, 0.05, {y: "-=30", ease: Power1.easeInOut, repeat: 2, yoyo: true}, 0.08)
-    .to(bb8Head, 0.2, {y: "-=10", ease: Power3.easeInOut, repeat: 2, yoyo: true, repeatDelay: 0.4}, "bb8-in =+1")
-    .to(bb8Head, 0.35, {
-        y: "+=15",
-        ease: Power1.easeInOut,
-        repeat: 2,
-        yoyo: true,
-        repeatDelay: 0.2
-    })
-    .to(bb8Head, 0.275, {
-        y: "-=5",
-        repeat: 1,
-        yoyo: true,
-        repeatDelay: 0.1,
-        ease: Power4.easeInOut
-    })
-
 
 let tl1 = new TimelineMax({repeat: -1});
 tl1.set(mountainS, {left: 600, autoAlpha: 1});
@@ -202,48 +115,3 @@ function spinEarth() {
 }
 
 spinEarth();
-
-
-
-
-var listItems = $('.stonePart1'),
-    listItemsArray = listItems.toArray();
-var til = new TimelineMax({repeat: -1});
-
-listItemsArray.sort(function () {
-    return 0.5 - Math.random()
-});
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 300}, {x: 3500, ease: Power2.easeInOut}, 0.525);
-
-var listItems = $('.stonePart2'),
-    listItemsArray = listItems.toArray();
-var til = new TimelineMax({repeat: -1});
-
-listItemsArray.sort(function () {
-    return 0.5 - Math.random()
-});
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.625);
-var listItems = $('.stonePart3'),
-    listItemsArray = listItems.toArray();
-var til = new TimelineMax({repeat: -1});
-
-listItemsArray.sort(function () {
-    return 0.5 - Math.random()
-});
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.725);
-var listItems = $('.stonePart4'),
-    listItemsArray = listItems.toArray();
-var til = new TimelineMax({repeat: -1});
-
-listItemsArray.sort(function () {
-    return 0.5 - Math.random()
-});
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.425);
-var listItems = $('.stonePart5'),
-    listItemsArray = listItems.toArray();
-var til = new TimelineMax({repeat: -1});
-
-listItemsArray.sort(function () {
-    return 0.5 - Math.random()
-});
-til.staggerFromTo(listItemsArray, 3, {position: 'relative', x: 0}, {x: 3500, ease: Power2.easeInOut}, 0.325);
