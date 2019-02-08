@@ -7,7 +7,10 @@ let mountainLg = document.getElementById("mountain6");
 let mountainN = document.getElementById("mountain7");
 let mountainNr = document.getElementById("mountain8");
 let middle = document.getElementById("middle");
+let svg = document.getElementById("svg");
 
+TweenMax.set(svg, {x:-700, scale:0.1});
+TweenMax.to(svg , 4, {x:"+=700",scale:1, force3D:false});
 let tl1 = new TimelineMax({repeat: 1000});
 tl1.set(mountainS, {left: 600, autoAlpha: 1})
     .fromTo(mountainS, 40, {x: -1440, ease: Linear.easeNone}, {x: 2640, ease: Linear.easeNone})
@@ -21,7 +24,7 @@ tl1.set(mountainS, {left: 600, autoAlpha: 1})
 
 let tlmd = new TimelineMax({repeat: 1000});
 tlmd.set(middle, {left: 900, autoAlpha: 1})
-    .fromTo(middle, 25, {x: -940, ease: Linear.easeNone}, {x: 900, ease: Linear.easeNone})
+    .fromTo(middle, 25, {x: -940, ease: Linear.easeNone}, {x: 3900, ease: Linear.easeNone})
     .set(middle, {autoAlpha: 0});
 
 let tlSm = new TimelineMax({repeat: 1000, delay: 14});

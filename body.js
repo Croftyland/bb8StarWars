@@ -7,6 +7,8 @@ let bb8 = document.getElementById("bb8");
 let bb8Body = document.getElementById("bb8-body");
 let bb8Shadow = document.getElementById("bb8-shadow");
 let bb8Head = document.getElementById("bb8-head");
+let rotate = document.getElementById("bb8-face");
+let eyes = document.getElementById("bb8-eyes");
 
 tl
     .to(bb8Shadow, 0.1, {scale: 1.1, repeat: -1, yoyo: true, ease: Linear.easeNone})
@@ -41,48 +43,9 @@ tl
         repeat: -1,
         paused: false
     },)
-//
-// let animTl = new TimelineMax({repeat: -1});
-// let tween1 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 30,
-//     x: 240,
-//     y: 130,
-//     transformOrigin: "center",
-//     ease: new SlowMo(0.5, 0.8),
-//     yoyo: true
-// }))
-// let tween2 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 0,
-//     x: 10,
-//     y: 0,
-//     transformOrigin: "center",
-//     ease: Power3.easeInOut,
-//     yoyo: true,
-// }))
-// let tween3 = (TweenLite.to(bb8Head, 1,
-//     {rotation: -20,
-//         ease: RoughEase.ease.config({
-//
-//             template: Power0.easeNone,
-//             strength: 1,
-//             points: 20,
-//             taper: "none",
-//             randomize: true,
-//             clamp: true
-//         }),
-//         x:-230,
-//         y:20
-//     }))
-// let tween4 = (TweenLite.to(bb8Head, 1, {
-//     rotation: 0,
-//     x: 10,
-//     y: 0,
-//     transformOrigin: "center",
-//     ease: Power3.easeInOut,
-//     yoyo: true,
-// }))
-//
-// animTl
-//     .add([tween1, tween2, tween3, tween4], "+=1", "sequence", 0.5);
 
+let animTl = new TimelineMax({repeat: -1});
+animTl  .to(rotate, 2, {x: 0, ease: Back.easeOut}, 0)
+    .fromTo(rotate, 2, {x: "-=150", ease: Power1.easeInOut, repeat: -1},{x: "+=100", ease: Power1.easeInOut, repeat: -1, yoyo: true}, 0)
+    .fromTo(eyes, 2, {x: "-=150", ease: Power1.easeInOut, repeat: -1},{x: "+=100", ease: Power1.easeInOut, repeat: -1, yoyo: true}, 0)
 
