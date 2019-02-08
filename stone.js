@@ -1,9 +1,3 @@
-/*
-
-Read the description <3
-
-*/
-
 function random(min, max) {
     if (max === null) {
         max = min;min = 0;
@@ -11,14 +5,7 @@ function random(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function chanceRoll(chance) {
-    if (chance === null) {
-        chance = 50;
-    }
-    return chance > 0 && Math.random() * 100 <= chance;
-}
-
-var o = {
+let obj = {
     // Timeline related
     isIntro: true,
     isRollingLeft: true,
@@ -26,20 +13,9 @@ var o = {
     currentGravelTl: [],
     gravelProgress: [],
     prevGravelProgress: [],
-    // SlowMotion
-    slowMoFactor: 1,
-    slowMoFactorBody: 1,
-    // Head light status on/off
-    lightsOnOff: [0, 0],
-    // Wiggle head
-    wiggleFrame: 0,
-    allTheTime: 0,
-    nowAndThen: 0,
-    ranDur: 0,
-    ranPos: 0,
-    moveAmount: 0,
-    // Null object to parallax head components
-    headNull: { value: 0 },
+    motion: 1,
+    motions: 1,
+
 
     init: function init() {
         this.cacheDOM();
@@ -50,7 +26,6 @@ var o = {
         this.svg = document.querySelector("[data-bb8=svg]");
         this.gravelGroup = this.svg.querySelector("[data-bb8=gravelGroup]");
         this.gravel = this.svg.querySelectorAll("[data-bb8=gravel]");
-        this.largeMask = this.svg.querySelector("[data-bb8=largeMask]");
     },
     setStart: function setStart() {
         TweenMax.set(this.svg, { autoAlpha: 1 });
@@ -77,13 +52,6 @@ var o = {
 
         tls[tls.length] = tl;
         return tls;
-    },
-    getIntroAnim: function getIntroAnim() {
-        var tl = new TimelineMax();
-
-        tl.to(this.largeMask, 1.5, { scale: 0.95, ease: Back.easeInOut.config(1) })
-            .add(o.animate);
-        return tl;
     },
     getGravelAnims: function getGravelAnims(direction) {
         // Make an array for timelines
@@ -120,17 +88,9 @@ var o = {
         return tls;
     },
     animate: function animate() {
-        if (this.isIntro) {
-            o.playIntro();
-        } else {
             o.stopPlayNext();
-        }
     },
-    playIntro: function playIntro() {
-        o.isIntro = false;
-        o.currentTl[0] = o.getIntroAnim();
-        o.currentTl[0].play();
-    },
+
     stopPlayNext: function stopPlayNext() {
         var direction;
         if (o.isRollingLeft) {
@@ -141,7 +101,7 @@ var o = {
             direction = "left";
         }
 
-        TweenMax.to(o.currentTl, 0.5 / o.slowMoFactor, { timeScale: 0, onComplete: o.roll, onCompleteParams: [direction] });
+        TweenMax.to(o.currentTl, 0.5 / o.motion, { timeScale: 0, onComplete: o.roll, onCompleteParams: [direction] });
     },
     roll: function roll(direction) {
         var tls = o.getRollAnims(direction);
@@ -156,15 +116,9 @@ var o = {
 
             o.currentTl[j].play().timeScale(0);
 
-            TweenMax.to(o.currentTl[j], 1 / o.slowMoFactor, { timeScale: o.slowMoFactorBody });
+            TweenMax.to(o.currentTl[j], 1 / o. motion, { timeScale: o.motions });
         }
     },
-    recordProgress: function recordProgress() {
-        for (var i = 0; i < o.gravel.length; i++) {
-            o.prevGravelProgress[i] = o.currentTl[i].progress();
-        }
-    },
-
 };
 
-o.init();
+obj.init();
